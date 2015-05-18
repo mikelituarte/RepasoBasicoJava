@@ -225,8 +225,10 @@ public class ListaPersonas {
 			}
 		}
 		else{
-			
+			System.out.println("caca");
 			throw new InsertarPersonaException();
+			
+			//System.out.println("caca");
 		}
 	}
 	

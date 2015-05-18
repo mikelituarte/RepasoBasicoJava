@@ -10,5 +10,9 @@ public class InsertarPersonaException extends Exception{
 	
 	public static final String mensaje = "Numero de personas excecido. M�ximo " + ListaPersonas.CAPACIDAD + " personas";
 	
-
+	public InsertarPersonaException(){
+		//super (mensaje);
+		System.out.println(mensaje);
+	}
+	
 }
