@@ -39,6 +39,17 @@ public class Persona implements Serializable {
 		return this.nombre + " " + this.edad;
 	}
 	
+	public int compareTo(Persona p){
+		int res =0;
+		
+		/*if(this.nombre){
+			
+		}*/
+		
+		return res;
+	}
+	
+	
 	
 
 	

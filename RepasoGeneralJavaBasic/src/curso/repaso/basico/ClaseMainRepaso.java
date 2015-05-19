@@ -1,6 +1,15 @@
 package curso.repaso.basico;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 import curso.repaso.excepciones.InsertarPersonaException;
+import curso.repaso.excepciones.NotaException;
 
 public class ClaseMainRepaso {
 
@@ -12,7 +21,13 @@ public class ClaseMainRepaso {
 		}
 	}
 	
-	public static void main(String[] args) throws InsertarPersonaException {
+	private static void mostrarArrayList(ArrayList<Persona> p){
+		for(Persona persona: p){
+			System.out.println(persona);
+		}
+	}
+	
+	public static void main(String[] args) throws InsertarPersonaException, NotaException {
 		Persona p1 = new Persona("AAA", 10);
 		Persona p2 = new Persona("BBB", 23);
 		Persona p3 = new Persona("ccc", 25);
@@ -25,12 +40,13 @@ public class ClaseMainRepaso {
 		Persona p9 = new Persona("yyy", 25);
 		Persona p10 = new Persona("iii", 25);
 		Persona p11 = new Persona("mmm", 25);
+		Persona[] a = null;
 		
 		ListaPersonas lPersona = new ListaPersonas();
 		ListaPersonas lPersonas2 = null;
 		Persona[] arrayPersonas = null;
 		
-		System.out.println("muestro la lista al uniciar el programa, deberia estar vacia");
+		/*System.out.println("muestro la lista al uniciar el programa, deberia estar vacia");
 		lPersona.mostrar();
 		System.out.println("Inserto p1 nueva");
 		lPersona.insertarPersona(p1);
@@ -60,11 +76,14 @@ public class ClaseMainRepaso {
 		lPersona.eliminarPersona("BBB");
 		System.out.println("muestro la lista al borrar una persona");
 		lPersona.mostrar();
-		/*
+		
 		arrayPersonas = lPersona.deserializar();
 		System.out.println("mostramos el fichero deserializado");
-		lPersona.mostrar();*/
+		lPersona.mostrar();
 		System.out.println("Inserto una persona que ya existe el nombre");
+		try{
+		lPersona.insertarPersona(p1);
+		lPersona.insertarPersona(p2);
 		lPersona.insertarPersona(p3);
 		lPersona.insertarPersona(p4);
 		lPersona.insertarPersona(p5);
@@ -74,11 +93,51 @@ public class ClaseMainRepaso {
 		lPersona.insertarPersona(p9);
 		lPersona.insertarPersona(p10);
 		lPersona.insertarPersona(p11);
+		}
+		catch(InsertarPersonaException i){
+			
+		}
+		
+		//mostrarPersonas(lPersona.getListaPersonas());
+		ArrayList<Persona> alp = new ArrayList<Persona>();
+		alp.add(p1);
+		alp.add(p2);
+		alp.add(p3);
+		alp.add(p4);
+		
+		System.out.println(alp.toString());
+		
+		alp.remove(2);
+		System.out.println(alp.toString());
+
+		Iterator<Persona> i_p = alp.iterator();
+		while(i_p.hasNext()){
+			System.out.println(i_p.next());
+		}
+		
+		//alp.remove(2); */
+		
+		lPersona.insertarPersona(p1);
 		lPersona.insertarPersona(p2);
+		lPersona.insertarPersona(p3);
+		lPersona.insertarPersona(p4);
 		
-		lPersona.mostrar();
+	//	mostrarPersonas(lPersona.getListaPersonas());
+		Iterator<Persona> i_p = lPersona.iterator();
+		while(i_p.hasNext()){
+			System.out.println(i_p.next());
+		}
 		
-		System.out.println("aqui");
+		Persona p = new Persona("AAA", 20);
+		Map<String, Persona> mapaPersonas  = new HashMap<String, Persona>();
+		mapaPersonas.put(p.getNombre(), p);
+		System.out.println(mapaPersonas.toString());
+		 p = new Persona("AAAB", 33320);
+		mapaPersonas.put(p.getNombre()+"hn", p);
+		System.out.println(mapaPersonas.toString());
+		p = mapaPersonas.get("AAA");
+		System.out.println(p);
+		//Iterator<HashMap<String, Persona>> = mapaPersonas;
 		
 	}
 	

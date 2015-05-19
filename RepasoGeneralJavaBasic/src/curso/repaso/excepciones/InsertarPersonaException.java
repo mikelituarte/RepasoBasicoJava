@@ -8,7 +8,7 @@ import curso.repaso.basico.ListaPersonas;
 
 public class InsertarPersonaException extends Exception{
 	
-	public static final String mensaje = "Numero de personas excecido. M�ximo " + ListaPersonas.CAPACIDAD + " personas";
+	public static final String mensaje = "Numero de personas excecido. Maximo " + ListaPersonas.CAPACIDAD + " personas";
 	
 	public InsertarPersonaException(){
 		//super (mensaje);

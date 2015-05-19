@@ -6,7 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Iterator;
 import java.util.Properties;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 //import curso.ejemplos.basicos.Persona;
 import curso.repaso.excepciones.InsertarPersonaException;
@@ -17,12 +20,14 @@ import curso.repaso.excepciones.InsertarPersonaException;
 
 //import val.examples.basic.exceptions.InsertarPersonaException;
 
-public class ListaPersonas {
+//public class ListaPersonas implements Iterator<Persona>{
+public class ListaPersonas implements Iterable<Persona>{
 	
 	public static final int CAPACIDAD = 10;
 	
 	private Persona[] array_personas;
-	private int cantidadPersonas = 0; //indica el numero de personas que hay en el array_personas
+	private int cantidadPersonas; //indica el numero de personas que hay en el array_personas
+
 	
 	/**
 	 * Es muy posible que haga falta a�adir alg�n campo m�s
@@ -40,6 +45,8 @@ public class ListaPersonas {
 	}
 	
 	
+
+	
 	
 	public Persona[] getListaPersonas ()
 	{
@@ -47,6 +54,11 @@ public class ListaPersonas {
 		
 		return this.array_personas;
 	}
+	
+	public int getCantidadPersonas() {
+		return this.cantidadPersonas;
+	}
+	
 	
 	
 	
@@ -225,10 +237,7 @@ public class ListaPersonas {
 			}
 		}
 		else{
-			System.out.println("caca");
 			throw new InsertarPersonaException();
-			
-			//System.out.println("caca");
 		}
 	}
 	
@@ -301,6 +310,27 @@ public class ListaPersonas {
 		else{//si no existe la persona a borrar
 			System.out.println("La persona \"" + nombre + "\" NO existe en la lista" );
 		}
+	}
+
+
+	@Override
+	public void forEach(Consumer<? super Persona> arg0) {
+		// TODO Auto-generated method stub	
+	}
+
+
+	@Override
+	public Iterator<Persona> iterator() {
+		// TODO Auto-generated method stub
+		Recorrer r = new Recorrer(this);
+		return r;
+	}
+
+
+	@Override
+	public Spliterator<Persona> spliterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
